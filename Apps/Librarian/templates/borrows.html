@@ -1,0 +1,47 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %} Borrows {% endblock %}
+
+
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Library</h1>
+                <p>Here you can see all the borrowed books from members of the library.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered" id="tblborrows">
+                    <thead>
+                        <tr>
+                            <th scope="col">Member</th>
+                            <th scope="col">Book</th>
+                            <th scope="col">Borrow Date</th>
+                            <th scope="col">Return Date</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- print 1000 borrows -->
+                        {% for borrow in borrows %}
+                        <tr>
+                            <td>{{ borrow.member }}</td>
+                            <td>{{ borrow.book }}</td>
+                            <td>{{ borrow.borrow_date }}</td>
+                            <td>{{ borrow.return_date }}</td>
+                            <td>
+                                <a href="/librarian/borrows/{{ borrow.id }}" class="btn btn-primary">Return</a> 
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

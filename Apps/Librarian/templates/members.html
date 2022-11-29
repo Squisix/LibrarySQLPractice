@@ -1,0 +1,45 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %} Members {% endblock %}
+
+
+
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>Members</h1>
+                <p>Here you can see all the members inscribed in the library.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover table-bordered" id="tblmembers">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Surname</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- print 1000 members -->
+                        {% for member in members %}
+                        <tr>
+                            <td>{{ member.name }}</td>
+                            <td>{{ member.surname }}</td>
+                            <td>{{ member.email }}</td>
+                            <td>
+                                <a href="/librarian/members/{{ member.id }}" class="btn btn-primary">Borrows</a> 
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
